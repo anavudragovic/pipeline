@@ -10,11 +10,11 @@ Python pipeline reduce.py calibrates CCD images taken with Milankovic telescope 
  
  The basic usage is simple reduction (bias, dark and flat-field correction):
 
->> python /home/data/ reduce.py 
+   >> python /home/data/ reduce.py 
 
 Note: if the script is called from the dir with raw images then path (/home/data/) can be omitted. Standard calibration is done and calibrated images with suffix _cal are created and stored in the 'calibration' dir. If other corrections are needed like the correction for hot/dead pixels an additional key (-c) should be set:
 
->> python /home/data/ reduce.py -c
+   python /home/data/ reduce.py -c
 
 and the output calibrated files have the suffix _fix that adds up to the previous suffux _cal, so the end result files have _cal_fix suffix.
 One more possibility is correction for large scale background variations invoked by additional -b key. We suggest the usage of -s key to store intermediate files.
