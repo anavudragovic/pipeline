@@ -1,6 +1,4 @@
-# pipeline
-
-reduce.py
+# reduce.py
 
 Python pipeline reduce.py calibrates CCD images taken with Milankovic telescope mounted at the Astronomical Station Vidojevica. It creates three dirs in the parent (working) dir: 
 
@@ -8,7 +6,7 @@ Python pipeline reduce.py calibrates CCD images taken with Milankovic telescope 
  2. astrometry # To store astrometrically solved calibrated images
  3. photometry # To store output tables with measured photometry
  
- The basic usage is simple reduction (bias, dark and flat-field correction):
+ The basic usage is simple (standard) data reduction (bias, dark and flat-field correction):
 
     python /home/data/ reduce.py 
 
