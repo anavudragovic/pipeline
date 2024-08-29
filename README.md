@@ -1,6 +1,17 @@
 # reduce.py
 
-Python pipeline reduce.py calibrates CCD images taken with Milankovic telescope mounted at the Astronomical Station Vidojevica. It creates three dirs in the parent (working) dir: 
+Python pipeline reduce.py calibrates CCD images taken with Milankovic telescope mounted at the Astronomical Station Vidojevica. 
+
+Prerequisites:
+1. psutil v5.9.0
+2. ccdproc v2.4.2
+3. astropy v5.3.4
+4. photutils v1.13.0
+5. scipy v1.13.1
+6. twirl v0.4.2
+7. padas v2.2.2
+
+It creates three dirs in the parent (working) dir: 
 
  1. calibration # To store calibrated images
  2. astrometry # To store astrometrically solved calibrated images
