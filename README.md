@@ -59,6 +59,7 @@ Additional flag (flag = 0) informs the user if the target is found in the image 
 The pipeline reads this file and locate targets with the coordinates provided. If the file is missing, nominal coordinates read from the image header (OBJCTRA, OBJCTDEC) are used instead.
 
 Differential photometry is done automatically if the file named {target}_stars.txt is provided in the main (working) dir. An example of this file is given below:
+
     cat {target}_stars.txt
     1.5813689 20.2029552 Mrk335
     1.6925974 20.1617019 7
