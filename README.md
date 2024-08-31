@@ -51,18 +51,14 @@ Another option is to make FWHM variable (-v) with the following call:
 
 Radius for aperture photometry is 3 x FWHM, annulus radius starting 10 pixels away from the aperture radius and spanning for 10 pixels. Three sigma clipping is done in the sky annulus. The peak flux is measured and if larger than 60000 ADU the flagP is set to 1, meaning the corresponding star is saturated. The output ASCII files with photometric measurements for each individual science frame are created and stored in the 'photometry' dir. An example of this file is listed below:
 
-    head -2 photometry/{target}_{FILTER}_cal_fix_skyflat_wcs.txt 
-    
-xpix ypix ID RAJ2000 DECJ2000 flux_peak flux flux_err mag mag_err AIRMASS FILTER MJD-HELIO DATE-OBS flag
-
-1257.3644 18.5583 1 76.33859044799215 52.9397 139.2767 1732.1596 126.7299 -8.0965 0.0794 1.2151 SII 60230.952799189836 2023-10-13T22:48:17 0
+    head -2 photometry/{target}_{FILTER}_cal_fix_skyflat_wcs.txt     
+    xpix ypix ID RAJ2000 DECJ2000 flux_peak flux flux_err mag mag_err AIRMASS FILTER MJD-HELIO DATE-OBS flag
+    1257.3644 18.5583 1 76.33859044799215 52.9397 139.2767 1732.1596 126.7299 -8.0965 0.0794 1.2151 SII 60230.952799189836 2023-10-13T22:48:17 0
 
 Apart from these individual files, the 'master' photometry file is created for each target in which single line corresponds to the single image:
 
     head -2 {target}_photometry.txt
-    
     FILENAME MJD-HELIO FILTER DATE-OBS RAJ2000 DECJ2000 xpix ypix flag flag_p flux_peak flux mag mag_err 
-    
     ./astrometry/G191B2B-0010_SII_cal_fix_skyflat_wcs.fit 60230.952799189836 SII 2023-10-13T22:48:17 76.3777256240344 52.83061133799532 1096.039399661005 1035.3521457292177 0 0 3633.623046875 38415.43061860332 -11.461264264462043 0.006452562092615998 
 
 Additional flag (flag = 0) informs the user if the target is found in the image within 5 arcsec from its position read from the catalog or the image header. If not its value is changed to 1. The flag 'flagP' is set to zero by default unless the source is saturated (flagP = 1). By default, the catalog file 'katalog.cat' should be provided before observations, and should list all targets that should be observed:
