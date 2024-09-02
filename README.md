@@ -11,6 +11,8 @@ Prerequisites:
 6. twirl v0.4.2
 7. padas v2.2.2
 
+Header keywords required for the script to work: IMAGETYP, FILTER, EXPTIME, OBJCTRA, OBJCTDEC, DATE-OBS, AIRMASS, JD-HELIO.
+
 It creates three dirs in the parent (working) dir: 
 
  1. calibration # To store calibrated images
