@@ -2,7 +2,7 @@ import argparse, textwrap
 
 from datetime import datetime as dt
 
-import sys, os, glob, psutil, time, math
+import sys, os, glob, psutil, math
 
 import ccdproc as ccdp
 
@@ -52,7 +52,7 @@ from scipy.ndimage import median_filter
 
 import twirl
 from shutil import which
-from sys import platform
+#from sys import platform
 
 import pandas as pd
 
@@ -105,7 +105,7 @@ def process_batch(batch_files):
     traceback.print_exc()
     return None
   
-##################################### FUNKCIJE ZA KALIBRACIJA ##############################
+##################################### FUNKCIJE ZA KALIBRACIJU ##############################
 
 def makeMasterBIAS(file_list):
   
@@ -505,8 +505,10 @@ def doAstrometry(FITSfls_list):
           FITSout=FITSnm.replace(".fit","_wcs.fit" ).replace('calibration','astrometry')
           # Check if astrometry is installed AND system cmd parallel
           # else use python twirl package
-          outFl.write("solve-field "+FITSnm+" --ra "+RA+" --dec "+DEC+" --radius 0.2 --scale-units arcsecperpix --scale-low 0.38 --scale-high 0.40 --crpix-center -p -N "+FITSout+" -O -I noneI.fits -M none.fits -R none.fits -B none.fits -P none -k none -U none -y -S none --axy noneaxy --wcs bla.wcs\n")
-          #print("solve-field "+FITSnm+" --ra "+RA+" --dec "+DEC+" --radius 0.2 --scale-units arcsecperpix --scale-low 0.38 --scale-high 0.40 --crpix-center -p -N "+FITSout+"\n")
+          scaleLow=pixelscale-0.01
+          scaleHigh=pixelscale+0.01
+          outFl.write("solve-field "+FITSnm+" --ra "+RA+" --dec "+DEC+" --radius 0.2 --scale-units arcsecperpix --scale-low " + str(scaleLow) + " --scale-high "+ str(scaleHigh)+ " --crpix-center -p -N "+FITSout+" -O -I noneI.fits -M none.fits -R none.fits -B none.fits -P none -k none -U none -y -S none --axy noneaxy --wcs bla.wcs\n")
+          print("solve-field "+FITSnm+" --ra "+RA+" --dec "+DEC+" --radius 0.2 --scale-units arcsecperpix --scale-low" + str(scaleLow) + " --scale-high "+ str(scaleHigh)+ " --crpix-center -p -N "+FITSout+" -O -I noneI.fits -M none.fits -R none.fits -B none.fits -P none -k none -U none -y -S none --axy noneaxy --wcs bla.wcs\n")
           print("Astrometry (solve-field): ",FITSnm," --> ",FITSout)
           k += 1
     cmd = "parallel -j "+str(Ncores)+" < tmp"
@@ -1318,4 +1320,3 @@ if __name__ == "__main__":
   main(args)
   
   
-
